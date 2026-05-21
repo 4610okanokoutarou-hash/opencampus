@@ -24,16 +24,32 @@
     }
 
 header {
+  position: sticky;
+  top: 0;
+
+  height: 100vh;
+  min-height: 300px;
+
   background:
-    linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)),
+    linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.35)),
     url('S__91496450.jpg');
 
   background-size: cover;
   background-position: center;
 
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
   color: white;
-  padding: 60px 20px;
   text-align: center;
+
+  transition:
+    height 0.4s ease,
+    padding 0.4s ease;
+
+  z-index: 1000;
 }
 
     main {
@@ -46,7 +62,7 @@ header {
     }
 
     h1, h2 {
-      color: #003366;
+      color: #008000;
     }
 
     section {
@@ -73,6 +89,22 @@ header {
     .button:hover {
       opacity: 0.9;
     }
+    header h1 {
+  font-size: 4rem;
+  margin: 0;
+
+  text-shadow:
+    0 4px 20px rgba(0,0,0,0.6);
+
+  transition: font-size 0.4s ease;
+}
+    header.shrink {
+  height: 220px;
+}
+
+header.shrink h1 {
+  font-size: 2rem;
+}
   </style>
 </head>
 <body>
@@ -145,6 +177,18 @@ header {
   <footer>
     © 2026 横浜国立大学 都市社会共生学科 情報サイト
   </footer>
+<script>
+window.addEventListener('scroll', function () {
 
+  const header = document.querySelector('header');
+
+  if (window.scrollY > 100) {
+    header.classList.add('shrink');
+  } else {
+    header.classList.remove('shrink');
+  }
+
+});
+</script>
 </body>
 </html>
